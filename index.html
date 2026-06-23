@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALCOOL TOWN - Cinema</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: url('./bg.png') no-repeat;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Overlay cinéma */
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.85));
+      z-index: 1;
+    }
+
+    /* PARTICULES */
+    .particle {
+      position: absolute;
+      background: rgba(0, 255, 157, 0.9);
+      box-shadow: 0 0 8px rgba(0, 255, 157, 0.6);
+      z-index: 1;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-10vh) translateX(80px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="overlay"></div>
+
+  <script>
+    for (let i = 0; i < 700; i++) {
+      let p = document.createElement("div");
+      p.className = "particle";
+
+      // taille aléatoire
+      let size = Math.random() * 6 + 2;
+      p.style.width = size + "px";
+      p.style.height = size + "px";
+
+      // position
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.top = Math.random() * 100 + "vh";
+
+      // animation
+      p.style.animationDuration = (10 + Math.random() * 20) + "s";
+      p.style.animationDelay = Math.random() * 10 + "s";
+
+      // opacité
+      p.style.opacity = Math.random();
+
+      document.body.appendChild(p);
+    }
+  </script>
+
+</body>
+
+</html>
